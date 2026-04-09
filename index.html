@@ -2,17 +2,33 @@
 <html>
 <head>
   <title>Deeplink Test</title>
+
   <script>
     function openApp() {
-      window.location.href = "spotilla://test";
+      // Get token from URL
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get("token") || "demo123";
 
-      setTimeout(function() {
+      // Try to open app
+      window.location.href = "spotilla://login?token=" + token;
+
+      // Fallback to Play Store after delay
+      setTimeout(function () {
         window.location.href = "https://play.google.com/store/apps/details?id=fi.seclion.spotilla";
       }, 2000);
     }
   </script>
 </head>
+
 <body onload="openApp()">
   <h2>Opening app...</h2>
+  <p>If not redirected, <a id="manualLink" href="#">click here</a></p>
+
+  <script>
+    // Manual fallback link update
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token") || "demo123";
+    document.getElementById("manualLink").href = "spotilla://login?token=" + token;
+  </script>
 </body>
 </html>

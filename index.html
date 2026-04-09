@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Deeplink Test</title>
+  <script>
+    function openApp() {
+      window.location.href = "spotilla://test";
+
+      setTimeout(function() {
+        window.location.href = "https://play.google.com/store/apps/details?id=fi.seclion.spotilla";
+      }, 2000);
+    }
+  </script>
+</head>
+<body onload="openApp()">
+  <h2>Opening app...</h2>
+</body>
+</html>

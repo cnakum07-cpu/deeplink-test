@@ -5,30 +5,32 @@
 
   <script>
     function openApp() {
-      // Get token from URL
       const params = new URLSearchParams(window.location.search);
       const token = params.get("token") || "demo123";
 
       // Try to open app
       window.location.href = "spotilla://login?token=" + token;
-
-      // Fallback to Play Store after delay
-      setTimeout(function () {
-        window.location.href = "https://play.google.com/store/apps/details?id=fi.seclion.spotilla";
-      }, 9000000);
     }
   </script>
 </head>
 
 <body onload="openApp()">
   <h2>Opening app...</h2>
-  <p>If not redirected, <a id="manualLink" href="#">click here</a></p>
+
+  <p>If app does not open:</p>
+  <ul>
+    <li>Make sure app is installed</li>
+    <li>Or tap below</li>
+  </ul>
+
+  <a id="manualLink" href="#">Open App Manually</a>
 
   <script>
-    // Manual fallback link update
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token") || "demo123";
-    document.getElementById("manualLink").href = "spotilla://login?token=" + token;
+
+    document.getElementById("manualLink").href =
+      "spotilla://login?token=" + token;
   </script>
 </body>
 </html>
